@@ -130,7 +130,7 @@ Pre-requirements - Install Docker on your computer https://docs.docker.com/docke
 Reference website for dockerizing a react app - https://mherman.org/blog/dockerizing-a-react-app/
 
 Steps I followed:
-1) Create a Docker.file in the starwars folder with the following contents:
+1) Create a Dockerfile in the starwars folder with the following contents:
 ```
 # base image
 FROM node:9.6.1
