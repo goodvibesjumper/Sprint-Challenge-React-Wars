@@ -1,7 +1,3 @@
-# Steps to "Dockerize"
-https://mherman.org/blog/dockerizing-a-react-app/
-
-
 # Sprint Challenge: React - Star Wars
 
 This challenge allows you to practice the concepts and techniques learned over the past Sprint and apply them in a concrete project. This Sprint explored ReactJS, Functional Components and Class Components. In your challenge for this Sprint, you will demonstrate proficiency by creating an application that uses ReactJS to consume live data retrieved from the World Wide Web and style that data nicely on the page.
@@ -126,3 +122,36 @@ In your solution, it is essential that you follow best practices and produce cle
 
 - Be mindful of the `fetch API` that is now built into most modern browsers [Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch).
 - Your data coming back from Dogs should be formatted in JSON format.
+
+
+# Chris's Steps to "Dockerize"
+Pre-requirements - Install Docker on your computer https://docs.docker.com/docker-for-mac/install/
+
+Reference website for dockerizing a react app - https://mherman.org/blog/dockerizing-a-react-app/
+
+Steps I followed:
+1) Create a Docker.file in the starwars folder with the following contents:
+```
+# base image
+FROM node:9.6.1
+
+# set working directory
+RUN mkdir /usr/src/app
+WORKDIR /usr/src/app
+
+# add `/usr/src/app/node_modules/.bin` to $PATH
+ENV PATH /usr/src/app/node_modules/.bin:$PATH
+
+# install and cache app dependencies
+COPY package.json /usr/src/app/package.json
+RUN npm install --silent
+RUN npm install react-scripts@1.1.1 -g --silent
+
+# start app
+CMD ["npm", "start"]
+```
+
+2) Create a .gitignore file in starwars folder with the following contents:
+```
+node_modules
+```
