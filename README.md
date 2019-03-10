@@ -155,3 +155,18 @@ CMD ["npm", "start"]
 ```
 node_modules
 ```
+
+3) Build and tag the Docker image
+```
+docker build -t sample-app .
+```
+
+4) Spin up the container once the build is done
+```
+docker run -it \
+  -v ${PWD}:/usr/src/app \
+  -v /usr/src/app/node_modules \
+  -p 3000:3000 \
+  --rm \
+  sample-app
+```
